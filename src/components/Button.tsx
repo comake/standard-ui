@@ -5,10 +5,10 @@ import React, {
   useMemo,
   RefObject,
 } from "react";
-import SvgIcon, { SvgSupportedIconProps } from "../SvgIcon";
+import { SvgSupportedIconProps } from "./SvgIcon";
 import { twMerge } from "tailwind-merge";
-import Tooltip, { TooltipProps } from "../Tooltip";
-import "../index.css";
+import SvgIcon from "./SvgIcon";
+import Tooltip, { TooltipProps } from "./Tooltip";
 
 type ButtonVariants = "primary" | "secondary" | "link";
 type ButtonClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -43,10 +43,7 @@ const classMapping: Record<ButtonVariants, string> = {
 };
 
 // eslint-disable-next-line react/display-name
-export const Button = forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
-  ButtonProps
->(
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   (
     {
       type,
@@ -131,6 +128,7 @@ export const Button = forwardRef<
             {content}
             {/* FIXME: need to refactor badge */}
             {badge !== undefined && (
+              // eslint-disable-next-line
               <span className="absolute -right-[12px] -bottom-[12px] bg-brand-base-colors-primary-500 text-text-base-base-100 rounded-full w-6 h-6 text-xs flex items-center justify-center">
                 {badge}
               </span>
@@ -152,6 +150,7 @@ export const Button = forwardRef<
             {content}
           </a>
         );
+
       return (
         <Link
           {...nativeProps}
