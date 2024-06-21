@@ -5,7 +5,11 @@ import React, {
   useMemo,
   RefObject,
 } from "react";
-import { SvgSupportedIconProps } from "./SvgIcon";
+import {
+  SvgSupportedIconProps,
+  SvgExternalIconProps,
+  SvgIconProps,
+} from "./SvgIcon";
 import { twMerge } from "tailwind-merge";
 import SvgIcon from "./SvgIcon";
 import Tooltip, { TooltipProps } from "./Tooltip";
@@ -25,9 +29,13 @@ export interface ButtonProps
   onClick?: ButtonClickHandler | AnchorClickHandler;
   colorVariant?: "red" | "green";
   variant?: ButtonVariants;
-  startIcon?: SvgSupportedIconProps["icon"];
+  startIcon?:
+    | SvgSupportedIconProps["icon"]
+    | SvgExternalIconProps["ExternalIcon"];
   startIconClass?: string;
-  endIcon?: SvgSupportedIconProps["icon"];
+  endIcon?:
+    | SvgSupportedIconProps["icon"]
+    | SvgExternalIconProps["ExternalIcon"];
   endIconClass?: string;
   isIconButton?: boolean;
   link?: string;
@@ -43,7 +51,10 @@ const classMapping: Record<ButtonVariants, string> = {
 };
 
 // eslint-disable-next-line react/display-name
-export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+export const Button = forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps
+>(
   (
     {
       type,
@@ -95,24 +106,36 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         variantClasses,
       ]
     );
-    const content = useMemo(
-      () => (
+    const content = useMemo(() => {
+      const startIconProps =
+        startIcon &&
+        ((typeof startIcon === "string"
+          ? { icon: startIcon }
+          : { ExternalIcon: startIcon }) as SvgIconProps);
+      const endIconProps =
+        endIcon &&
+        ((typeof endIcon === "string"
+          ? { icon: endIcon }
+          : { ExternalIcon: endIcon }) as SvgIconProps);
+      return (
         <>
-          {startIcon && (
+          {!!startIconProps && (
             <SvgIcon
+              {...startIconProps}
               className={twMerge(startIconClass, "icon")}
-              icon={startIcon}
             />
           )}
 
           {children}
-          {endIcon && (
-            <SvgIcon icon={endIcon} className={twMerge(endIconClass, "icon")} />
+          {!!endIconProps && (
+            <SvgIcon
+              {...endIconProps}
+              className={twMerge(endIconClass, "icon")}
+            />
           )}
         </>
-      ),
-      [children, endIcon, endIconClass, startIcon, startIconClass]
-    );
+      );
+    }, [children, endIcon, endIconClass, startIcon, startIconClass]);
     const ButtonContent = useMemo(() => {
       if (!link)
         return (
@@ -126,7 +149,6 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
             type={type}
           >
             {content}
-            {/* FIXME: need to refactor badge */}
             {badge !== undefined && (
               // eslint-disable-next-line
               <span className="absolute -right-[12px] -bottom-[12px] bg-brand-base-colors-primary-500 text-text-base-base-100 rounded-full w-6 h-6 text-xs flex items-center justify-center">

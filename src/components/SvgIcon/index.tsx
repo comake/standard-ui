@@ -1,4 +1,4 @@
-import React, { ElementType, FC, useMemo } from "react";
+import React, { ComponentType, FC, useMemo } from "react";
 import Search from "./Search";
 import MoreHorizontal from "./MoreHorizontal";
 import Trash from "./Trash";
@@ -61,7 +61,7 @@ export interface SvgSupportedIconProps extends IconProps {
   icon: keyof typeof IconMap;
 }
 export interface SvgExternalIconProps extends IconProps {
-  ExternalIcon: ElementType;
+  ExternalIcon: ComponentType;
 }
 
 export interface IconProps {

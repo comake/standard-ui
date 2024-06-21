@@ -1,4 +1,4 @@
-"";
+("");
 import React, {
   MutableRefObject,
   ReactNode,
@@ -8,7 +8,11 @@ import React, {
   useRef,
   useState,
 } from "react";
-import SvgIcon, { SvgSupportedIconProps } from "./SvgIcon";
+import SvgIcon, {
+  SvgExternalIconProps,
+  SvgIconProps,
+  SvgSupportedIconProps,
+} from "./SvgIcon";
 import Typography from "./Typography";
 import { twMerge } from "tailwind-merge";
 import { TooltipProps, Tooltip } from "./Tooltip";
@@ -25,10 +29,14 @@ export interface NavigationBarItemClasses {
 }
 
 export interface NavigationBarItemProps {
-  endIcon?: SvgSupportedIconProps["icon"];
+  endIcon?:
+    | SvgSupportedIconProps["icon"]
+    | SvgExternalIconProps["ExternalIcon"];
   textLeft: ReactNode;
   textRight?: ReactNode;
-  startIcon?: SvgSupportedIconProps["icon"];
+  startIcon?:
+    | SvgSupportedIconProps["icon"]
+    | SvgExternalIconProps["ExternalIcon"];
   classes?: NavigationBarItemClasses;
   handleIconClick?: React.MouseEventHandler<HTMLButtonElement>;
   onClick?: React.MouseEventHandler<HTMLLIElement | HTMLAnchorElement>;
@@ -107,14 +115,24 @@ export const NavigationBarItem = forwardRef<
         ].join(" "),
       [cn, isActive, spacingClassName, variant]
     );
-    const Content = useMemo(
-      () => (
+    const Content = useMemo(() => {
+      const startIconProps =
+        startIcon &&
+        ((typeof startIcon === "string"
+          ? { icon: startIcon }
+          : { ExternalIcon: startIcon }) as SvgIconProps);
+      const endIconProps =
+        endIcon &&
+        ((typeof endIcon === "string"
+          ? { icon: endIcon }
+          : { ExternalIcon: endIcon }) as SvgIconProps);
+      return (
         <>
           <div className={"flex items-center relative"}>
-            {!!startIcon && (
+            {!!startIconProps && (
               <button onClick={handleIconClick}>
                 <SvgIcon
-                  icon={startIcon}
+                  {...startIconProps}
                   className={twMerge("left icon", classes?.startIcon)}
                 />
               </button>
@@ -133,25 +151,24 @@ export const NavigationBarItem = forwardRef<
                 {textRight}
               </Typography>
             )}
-            {!!endIcon && (
+            {!!endIconProps && (
               <SvgIcon
-                icon={endIcon}
+                {...endIconProps}
                 className={twMerge("ml-auto mr-0 right icon", classes?.endIcon)}
               />
             )}
           </div>
         </>
-      ),
-      [
-        classes?.endIcon,
-        classes?.startIcon,
-        endIcon,
-        handleIconClick,
-        startIcon,
-        textLeft,
-        textRight,
-      ]
-    );
+      );
+    }, [
+      classes?.endIcon,
+      classes?.startIcon,
+      endIcon,
+      handleIconClick,
+      startIcon,
+      textLeft,
+      textRight,
+    ]);
 
     const style: React.CSSProperties = useMemo(() => {
       if (leftIndent > 0) {
