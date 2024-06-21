@@ -9,6 +9,15 @@
         "plugin:@typescript-eslint/recommended"
     ],
     "overrides": [
+        {
+            "files": [
+                "*.ts",
+                "*.tsx"
+            ],
+            "rules": {
+                "@typescript-eslint/no-explicit-any": "warn"
+            }
+        }
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -21,6 +30,11 @@
     ],
     "rules": {
         "@typescript-eslint/no-empty-interface": "warn",
-        "react/no-unescaped-entities":"warn"
+        "react/no-unescaped-entities": "warn"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }
