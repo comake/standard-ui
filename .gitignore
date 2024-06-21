@@ -9,7 +9,8 @@
 
 
 # production
-/dist
+# /dist 
+# This is included for now so that we can install from github. When we publish to npm, we should uncomment this line and delete the /dist folder from the repo.
 
 # misc
 .DS_Store
