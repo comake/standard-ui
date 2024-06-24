@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 import * as Popover from "@radix-ui/react-popover";
 import { SearchableOptionsList } from "./SearchList/SearchableOptionsList";
 
-export interface SelectOption<Value extends string> {
+export interface SelectOption<Value extends string | number> {
   label: string;
   iconUrl?: string;
   value: Value;

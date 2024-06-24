@@ -323,7 +323,7 @@ interface SearchListItem {
     id: string;
 }
 
-interface SelectOption<Value extends string> {
+interface SelectOption<Value extends string | number> {
     label: string;
     iconUrl?: string;
     value: Value;

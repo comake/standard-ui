@@ -1,6 +1,6 @@
 import React from "react";
 import { SvgSupportedIconProps } from "./SvgIcon";
-export interface SelectOption<Value extends string> {
+export interface SelectOption<Value extends string | number> {
     label: string;
     iconUrl?: string;
     value: Value;
