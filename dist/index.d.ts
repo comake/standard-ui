@@ -297,6 +297,10 @@ interface SearchableOptionsListProps<ListItem> {
         renderListItem: (inputText: string) => SearchListItem;
     };
 }
+declare function createRendererWithNavigationBarItem<ListItem extends {
+    disabled?: boolean;
+}>(labelKey: keyof ListItem): ListItemRenderer<ListItem>;
+declare function SearchableOptionsList<T>(props: SearchableOptionsListProps<T>): React.JSX.Element;
 
 interface SearchListLocalPopupProps<T> extends SearchableOptionsListProps<T> {
     children: React.ReactNode;
@@ -457,4 +461,4 @@ interface VerticalSpacerProps {
 }
 declare function VerticalSpacer({ size, isFlexChild }: VerticalSpacerProps): React.JSX.Element;
 
-export { Avatar, AvatarList, Button, type ButtonProps, ButtonsSet, type ButtonsSetProps, CardContent, type CardContentProps, type CardContentVariants, Checkbox, type CheckboxProps, CircularProgress, type CircularProgressProps, ClickAwayListener, type ClickAwayListenerProps, HorizontalSpacer, type IconProps, NavigationBarHeader, NavigationBarItem, type NavigationBarItemClasses, type NavigationBarItemProps, type NavigationBarItemWithDropDownProps, NavigationBarItemWithDropdown, type Router, type SearchListItem, SearchListLocal, SearchListLocalPopup, type SearchListLocalPopupProps, type SearchListLocalProps, SearchListNetwork, type SearchListNetworkProps, Select, type SelectBaseProps, type SelectMultipleProps, type SelectOption, type SelectProps, type SelectSingleProps, type SelectVariants, type SvgExternalIconProps, SvgIcon, type SvgIconProps, type SvgSupportedIconProps, Switch, SwitchButton, type SwitchConfig, type SwitchProps, TabButton, type TabButtonBaseProps, type TabButtonProps, type TabLinkButtonProps, Tag, TextInput, type TextInputProps, Tooltip, type TooltipProps, Typography, type TypographyElements, type TypographyProps, type TypographyVariants, VerticalSpacer, type VerticalSpacerSize };
+export { Avatar, AvatarList, Button, type ButtonProps, ButtonsSet, type ButtonsSetProps, CardContent, type CardContentProps, type CardContentVariants, Checkbox, type CheckboxProps, CircularProgress, type CircularProgressProps, ClickAwayListener, type ClickAwayListenerProps, type ClickHandler, type CreateNewComponent, type CreateNewComponentProps, HorizontalSpacer, type IconProps, type ListItemRenderer, NavigationBarHeader, NavigationBarItem, type NavigationBarItemClasses, type NavigationBarItemProps, type NavigationBarItemWithDropDownProps, NavigationBarItemWithDropdown, type Router, type SearchListItem, SearchListLocal, SearchListLocalPopup, type SearchListLocalPopupProps, type SearchListLocalProps, SearchListNetwork, type SearchListNetworkProps, SearchableOptionsList, type SearchableOptionsListProps, Select, type SelectBaseProps, type SelectMultipleProps, type SelectOption, type SelectProps, type SelectSingleProps, type SelectVariants, type SvgExternalIconProps, SvgIcon, type SvgIconProps, type SvgSupportedIconProps, Switch, SwitchButton, type SwitchConfig, type SwitchProps, TabButton, type TabButtonBaseProps, type TabButtonProps, type TabLinkButtonProps, Tag, TextInput, type TextInputProps, Tooltip, type TooltipProps, Typography, type TypographyElements, type TypographyProps, type TypographyVariants, VerticalSpacer, type VerticalSpacerSize, createRendererWithNavigationBarItem };

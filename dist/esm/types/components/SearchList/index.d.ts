@@ -1,6 +1,7 @@
 export * from "./SearchListLocal";
 export * from "./SearchListLocalPopup";
 export * from "./SearchListNetwork";
+export * from "./SearchableOptionsList";
 export interface SearchListItem {
     title: string;
     description?: string;
