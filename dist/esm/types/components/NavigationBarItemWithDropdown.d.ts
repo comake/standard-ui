@@ -1,15 +1,8 @@
-import React from 'react';
-import { SvgSupportedIconProps } from './SvgIcon';
-import { NavigationBarItemProps } from './NavigationBarItem';
-export interface NavigationBarItemWithDropDownProps extends NavigationBarItemProps {
-    additionalOptions: OptionItem[][];
+import React from "react";
+import { NavigationBarItemProps } from "./NavigationBarItem";
+import { ContextMenuProps } from "./ContextMenu";
+export interface NavigationBarItemWithDropDownProps extends NavigationBarItemProps, Omit<ContextMenuProps, "handleClick"> {
+    handleContextMenuClick: ContextMenuProps["handleClick"];
 }
-export declare function NavigationBarItemWithDropdown({ additionalOptions, ...navBarItemProps }: NavigationBarItemWithDropDownProps): React.JSX.Element;
+declare function NavigationBarItemWithDropdown({ handleContextMenuClick, options, ...navBarItemProps }: NavigationBarItemWithDropDownProps): React.JSX.Element;
 export default NavigationBarItemWithDropdown;
-interface OptionItem {
-    label: string;
-    icon: SvgSupportedIconProps['icon'];
-    action?: (e: React.MouseEvent<HTMLLIElement>) => void;
-    className?: string;
-    OverlayContent?: () => JSX.Element;
-}

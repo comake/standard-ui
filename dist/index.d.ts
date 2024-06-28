@@ -242,17 +242,19 @@ interface NavigationBarItemProps {
 }
 declare const NavigationBarItem: React.ForwardRefExoticComponent<NavigationBarItemProps & React.RefAttributes<HTMLAnchorElement | HTMLLIElement>>;
 
-interface NavigationBarItemWithDropDownProps extends NavigationBarItemProps {
-    additionalOptions: OptionItem[][];
+interface ContextMenuProps {
+    options: ContextMenuOption[] | ContextMenuOption[][];
+    handleClick: (id: string) => void;
 }
-declare function NavigationBarItemWithDropdown({ additionalOptions, ...navBarItemProps }: NavigationBarItemWithDropDownProps): React.JSX.Element;
-
-interface OptionItem {
+type ContextMenuOption = {
     label: string;
-    icon: SvgSupportedIconProps['icon'];
-    action?: (e: React.MouseEvent<HTMLLIElement>) => void;
-    className?: string;
+    icon: SvgSupportedIconProps["icon"] | SvgExternalIconProps["ExternalIcon"];
+    id: string;
     OverlayContent?: () => JSX.Element;
+};
+
+interface NavigationBarItemWithDropDownProps extends NavigationBarItemProps, Omit<ContextMenuProps, "handleClick"> {
+    handleContextMenuClick: ContextMenuProps["handleClick"];
 }
 
 interface SearchListLocalProps {
@@ -461,4 +463,4 @@ interface VerticalSpacerProps {
 }
 declare function VerticalSpacer({ size, isFlexChild }: VerticalSpacerProps): React.JSX.Element;
 
-export { Avatar, AvatarList, Button, type ButtonProps, ButtonsSet, type ButtonsSetProps, CardContent, type CardContentProps, type CardContentVariants, Checkbox, type CheckboxProps, CircularProgress, type CircularProgressProps, ClickAwayListener, type ClickAwayListenerProps, type ClickHandler, type CreateNewComponent, type CreateNewComponentProps, HorizontalSpacer, type IconProps, type ListItemRenderer, NavigationBarHeader, NavigationBarItem, type NavigationBarItemClasses, type NavigationBarItemProps, type NavigationBarItemWithDropDownProps, NavigationBarItemWithDropdown, type Router, type SearchListItem, SearchListLocal, SearchListLocalPopup, type SearchListLocalPopupProps, type SearchListLocalProps, SearchListNetwork, type SearchListNetworkProps, SearchableOptionsList, type SearchableOptionsListProps, Select, type SelectBaseProps, type SelectMultipleProps, type SelectOption, type SelectProps, type SelectSingleProps, type SelectVariants, type SvgExternalIconProps, SvgIcon, type SvgIconProps, type SvgSupportedIconProps, Switch, SwitchButton, type SwitchConfig, type SwitchProps, TabButton, type TabButtonBaseProps, type TabButtonProps, type TabLinkButtonProps, Tag, TextInput, type TextInputProps, Tooltip, type TooltipProps, Typography, type TypographyElements, type TypographyProps, type TypographyVariants, VerticalSpacer, type VerticalSpacerSize, createRendererWithNavigationBarItem };
+export { Avatar, AvatarList, Button, type ButtonProps, ButtonsSet, type ButtonsSetProps, CardContent, type CardContentProps, type CardContentVariants, Checkbox, type CheckboxProps, CircularProgress, type CircularProgressProps, ClickAwayListener, type ClickAwayListenerProps, type ClickHandler, type CreateNewComponent, type CreateNewComponentProps, HorizontalSpacer, type IconProps, type ListItemRenderer, NavigationBarHeader, NavigationBarItem, type NavigationBarItemClasses, type NavigationBarItemProps, type NavigationBarItemWithDropDownProps, type Router, type SearchListItem, SearchListLocal, SearchListLocalPopup, type SearchListLocalPopupProps, type SearchListLocalProps, SearchListNetwork, type SearchListNetworkProps, SearchableOptionsList, type SearchableOptionsListProps, Select, type SelectBaseProps, type SelectMultipleProps, type SelectOption, type SelectProps, type SelectSingleProps, type SelectVariants, type SvgExternalIconProps, SvgIcon, type SvgIconProps, type SvgSupportedIconProps, Switch, SwitchButton, type SwitchConfig, type SwitchProps, TabButton, type TabButtonBaseProps, type TabButtonProps, type TabLinkButtonProps, Tag, TextInput, type TextInputProps, Tooltip, type TooltipProps, Typography, type TypographyElements, type TypographyProps, type TypographyVariants, VerticalSpacer, type VerticalSpacerSize, createRendererWithNavigationBarItem };
