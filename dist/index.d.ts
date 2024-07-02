@@ -83,6 +83,7 @@ declare const IconMap: {
     readonly chevronUp: React.FC<IconProps>;
     readonly chevronRight: React.FC<IconProps>;
     readonly chevronLeft: React.FC<IconProps>;
+    readonly checkSquare: React.FC<IconProps>;
     readonly external: React.FC<IconProps>;
     readonly sort: React.FC<IconProps>;
     readonly sortCountAscending: React.FC<IconProps>;

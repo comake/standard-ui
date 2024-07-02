@@ -1,17 +1,17 @@
-import React, { ComponentType, FC } from "react";
-import ArrowDownSolid from "./ArrowDownSolid";
-import ArrowTopRight from "./ArrowTopRight";
-import Overlay from "./Overlay";
-import Plus from "./Plus";
-import Commit from "./Commit";
-import Table from "./Table";
-import Graph from "./Graph";
-import Fork from "./Fork";
-import ArrowRightSolid from "./ArrowRightSolid";
-import PlusSolid from "./PlusSolid";
-import Empty from "./Empty";
-import Menu from "./Menu";
-import IssueOpen from "./IssueOpen";
+import React, { ComponentType, FC } from 'react';
+import ArrowDownSolid from './ArrowDownSolid';
+import ArrowTopRight from './ArrowTopRight';
+import Overlay from './Overlay';
+import Plus from './Plus';
+import Commit from './Commit';
+import Table from './Table';
+import Graph from './Graph';
+import Fork from './Fork';
+import ArrowRightSolid from './ArrowRightSolid';
+import PlusSolid from './PlusSolid';
+import Empty from './Empty';
+import Menu from './Menu';
+import IssueOpen from './IssueOpen';
 export interface SvgSupportedIconProps extends IconProps {
     icon: keyof typeof IconMap;
 }
@@ -47,6 +47,7 @@ declare const IconMap: {
     readonly chevronUp: React.FC<IconProps>;
     readonly chevronRight: React.FC<IconProps>;
     readonly chevronLeft: React.FC<IconProps>;
+    readonly checkSquare: React.FC<IconProps>;
     readonly external: React.FC<IconProps>;
     readonly sort: React.FC<IconProps>;
     readonly sortCountAscending: React.FC<IconProps>;
