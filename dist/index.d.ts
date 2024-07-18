@@ -214,7 +214,7 @@ interface NavigationBarHeaderProps {
 declare function NavigationBarHeader({ contentLeft, contentRight, leftIcon, rightIcon, variant, className: cn, spacing, onClick, }: NavigationBarHeaderProps): React.JSX.Element;
 
 type SpacingVariants = 0 | 1 | 2;
-type NavigationBarVariants = "primary" | "secondary";
+type NavigationBarVariants = 'primary' | 'secondary';
 interface NavigationBarItemClasses {
     root?: string;
     textLeft?: string;
@@ -223,10 +223,10 @@ interface NavigationBarItemClasses {
     endIcon?: string;
 }
 interface NavigationBarItemProps {
-    endIcon?: SvgSupportedIconProps["icon"] | SvgExternalIconProps["ExternalIcon"];
+    endIcon?: SvgSupportedIconProps['icon'] | SvgExternalIconProps['ExternalIcon'];
     textLeft: ReactNode;
     textRight?: ReactNode;
-    startIcon?: SvgSupportedIconProps["icon"] | SvgExternalIconProps["ExternalIcon"];
+    startIcon?: SvgSupportedIconProps['icon'] | SvgExternalIconProps['ExternalIcon'];
     classes?: NavigationBarItemClasses;
     handleIconClick?: React.MouseEventHandler<HTMLButtonElement>;
     onClick?: React.MouseEventHandler<HTMLLIElement | HTMLAnchorElement>;
@@ -235,6 +235,7 @@ interface NavigationBarItemProps {
     spacing?: SpacingVariants;
     variant?: NavigationBarVariants;
     leftIndent?: number;
+    isIconButton?: boolean;
     className?: string;
     link?: string;
     tooltipProps?: TooltipProps;
