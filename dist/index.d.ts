@@ -384,8 +384,8 @@ interface SwitchButtonProps extends SwitchConfig, Pick<SwitchProps, 'onChange'> 
 }
 declare function SwitchButton({ id, label, icon, onChange, isActive, roundSide, }: SwitchButtonProps): React.JSX.Element;
 
-type SizeVariants = "small" | "large";
-type TabVariants = "primary" | "secondary";
+type SizeVariants = 'small' | 'large';
+type TabVariants = 'primary' | 'secondary';
 type Router = {
     push: (link: string) => unknown | Promise<unknown>;
     [key: string | number]: unknown;
@@ -395,7 +395,7 @@ interface TabButtonBaseProps {
     isActive?: boolean;
     size?: SizeVariants;
     variant?: TabVariants;
-    icon?: SvgSupportedIconProps["icon"];
+    icon?: SvgSupportedIconProps['icon'];
     className?: string;
     onContextMenu?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
     LinkComponent?: React.ElementType;

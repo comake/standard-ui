@@ -1,7 +1,7 @@
-import React from "react";
-import { SvgSupportedIconProps } from "./SvgIcon";
-type SizeVariants = "small" | "large";
-type TabVariants = "primary" | "secondary";
+import React from 'react';
+import { SvgSupportedIconProps } from './SvgIcon';
+type SizeVariants = 'small' | 'large';
+type TabVariants = 'primary' | 'secondary';
 export type Router = {
     push: (link: string) => unknown | Promise<unknown>;
     [key: string | number]: unknown;
@@ -11,7 +11,7 @@ export interface TabButtonBaseProps {
     isActive?: boolean;
     size?: SizeVariants;
     variant?: TabVariants;
-    icon?: SvgSupportedIconProps["icon"];
+    icon?: SvgSupportedIconProps['icon'];
     className?: string;
     onContextMenu?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
     LinkComponent?: React.ElementType;
