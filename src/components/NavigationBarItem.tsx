@@ -79,8 +79,7 @@ export const NavigationBarItem = forwardRef<HTMLLIElement | HTMLAnchorElement, N
         const spacingClassName = useMemo(() => spacingClassMapping[spacing], [spacing]);
         const className = useMemo(
             () =>
-                [
-                    cn ?? '',
+                twMerge(
                     'navigation-bar-item primary',
                     'flex justify-between items-center',
                     variantClassMapping[variant],
@@ -88,7 +87,8 @@ export const NavigationBarItem = forwardRef<HTMLLIElement | HTMLAnchorElement, N
                     'focus:selected',
                     isActive ? 'selected' : '',
                     'data-[disabled]:disabled data-[disabled]:hover:bg-transparent data-[disabled]:cursor-not-allowed',
-                ].join(' '),
+                    cn
+                ),
             [cn, isActive, spacingClassName, variant]
         );
         const Content = useMemo(() => {
@@ -128,7 +128,16 @@ export const NavigationBarItem = forwardRef<HTMLLIElement | HTMLAnchorElement, N
                     </div>
                 </>
             );
-        }, [classes?.endIcon, classes?.startIcon, endIcon, handleIconClick, startIcon, textLeft, textRight]);
+        }, [
+            classes?.endIcon,
+            classes?.startIcon,
+            isIconButton,
+            endIcon,
+            handleIconClick,
+            startIcon,
+            textLeft,
+            textRight,
+        ]);
 
         const style: React.CSSProperties = useMemo(() => {
             if (leftIndent > 0) {
