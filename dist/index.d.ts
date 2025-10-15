@@ -217,32 +217,54 @@ type SpacingVariants = 0 | 1 | 2;
 type NavigationBarVariants = 'primary' | 'secondary';
 interface NavigationBarItemClasses {
     root?: string;
-    textLeft?: string;
-    textRight?: string;
     startIcon?: string;
     endIcon?: string;
 }
+/**
+ * NavigationBarItem component for creating navigation items with icons, text, and interactive states.
+ * Can render as either a list item or a link element.
+ */
 interface NavigationBarItemProps {
+    /** Icon displayed at the end of the navigation item */
     endIcon?: SvgSupportedIconProps['icon'] | SvgExternalIconProps['ExternalIcon'];
+    /** Primary text content displayed on the left side. Required but can be hidden if isIconButton is true */
     textLeft: ReactNode;
+    /** Optional text displayed on the right side */
     textRight?: ReactNode;
+    /** Icon displayed at the start of the navigation item */
     startIcon?: SvgSupportedIconProps['icon'] | SvgExternalIconProps['ExternalIcon'];
+    /** Optional label for the start icon when used without text (for accessibility) */
+    startIconLabel?: string;
+    /** Custom class names for specific parts of the component */
     classes?: NavigationBarItemClasses;
+    /** Click handler for the start icon button. If provided, icon becomes independently clickable */
     handleIconClick?: React.MouseEventHandler<HTMLButtonElement>;
+    /** Click handler for the main navigation item */
     onClick?: React.MouseEventHandler<HTMLLIElement | HTMLAnchorElement>;
+    /** If true, disables all interactions */
     disabled?: boolean;
+    /** If true, applies active/selected styles */
     isActive?: boolean;
+    /** Spacing level variant (0-2) for different indentation levels */
     spacing?: SpacingVariants;
+    /** Visual variant of the navigation item */
     variant?: NavigationBarVariants;
+    /** Additional left padding in pixels */
     leftIndent?: number;
+    /** If true, hides the text and only shows icons */
     isIconButton?: boolean;
+    /** Additional class names for the root element */
     className?: string;
+    /** If provided, renders as a link with this href */
     link?: string;
+    /** Tooltip configuration. Auto-generated for overflowing text if not provided */
     tooltipProps?: TooltipProps;
+    /** Custom link component (e.g., Next.js Link, React Router Link) */
     LinkComponent?: React.ElementType;
+    /** Context menu handler */
     onContextMenu?: (e: React.MouseEvent<HTMLAnchorElement | HTMLLIElement>) => void;
 }
-declare const NavigationBarItem: React.ForwardRefExoticComponent<NavigationBarItemProps & React.RefAttributes<HTMLAnchorElement | HTMLLIElement>>;
+declare const NavigationBarItem: React.ForwardRefExoticComponent<NavigationBarItemProps & React.RefAttributes<HTMLLIElement | HTMLAnchorElement>>;
 
 interface NavigationBarItemWithDropDownProps extends NavigationBarItemProps {
     additionalOptions: OptionItem[][];
@@ -463,4 +485,5 @@ interface VerticalSpacerProps {
 }
 declare function VerticalSpacer({ size, isFlexChild }: VerticalSpacerProps): React.JSX.Element;
 
-export { Avatar, AvatarList, Button, type ButtonProps, ButtonsSet, type ButtonsSetProps, CardContent, type CardContentProps, type CardContentVariants, Checkbox, type CheckboxProps, CircularProgress, type CircularProgressProps, ClickAwayListener, type ClickAwayListenerProps, type ClickHandler, type CreateNewComponent, type CreateNewComponentProps, HorizontalSpacer, type IconProps, type ListItemRenderer, NavigationBarHeader, NavigationBarItem, type NavigationBarItemClasses, type NavigationBarItemProps, type NavigationBarItemWithDropDownProps, NavigationBarItemWithDropdown, type Router, type SearchListItem, SearchListLocal, SearchListLocalPopup, type SearchListLocalPopupProps, type SearchListLocalProps, SearchListNetwork, type SearchListNetworkProps, SearchableOptionsList, type SearchableOptionsListProps, Select, type SelectBaseProps, type SelectMultipleProps, type SelectOption, type SelectProps, type SelectSingleProps, type SelectVariants, type SvgExternalIconProps, SvgIcon, type SvgIconProps, type SvgSupportedIconProps, Switch, SwitchButton, type SwitchConfig, type SwitchProps, TabButton, type TabButtonBaseProps, type TabButtonProps, type TabLinkButtonProps, Tag, TextInput, type TextInputProps, Tooltip, type TooltipProps, Typography, type TypographyElements, type TypographyProps, type TypographyVariants, VerticalSpacer, type VerticalSpacerSize, createRendererWithNavigationBarItem };
+export { Avatar, AvatarList, Button, ButtonsSet, CardContent, Checkbox, CircularProgress, ClickAwayListener, HorizontalSpacer, NavigationBarHeader, NavigationBarItem, NavigationBarItemWithDropdown, SearchListLocal, SearchListLocalPopup, SearchListNetwork, SearchableOptionsList, Select, SvgIcon, Switch, SwitchButton, TabButton, Tag, TextInput, Tooltip, Typography, VerticalSpacer, createRendererWithNavigationBarItem };
+export type { ButtonProps, ButtonsSetProps, CardContentProps, CardContentVariants, CheckboxProps, CircularProgressProps, ClickAwayListenerProps, ClickHandler, CreateNewComponent, CreateNewComponentProps, IconProps, ListItemRenderer, NavigationBarItemClasses, NavigationBarItemProps, NavigationBarItemWithDropDownProps, Router, SearchListItem, SearchListLocalPopupProps, SearchListLocalProps, SearchListNetworkProps, SearchableOptionsListProps, SelectBaseProps, SelectMultipleProps, SelectOption, SelectProps, SelectSingleProps, SelectVariants, SvgExternalIconProps, SvgIconProps, SvgSupportedIconProps, SwitchConfig, SwitchProps, TabButtonBaseProps, TabButtonProps, TabLinkButtonProps, TextInputProps, TooltipProps, TypographyElements, TypographyProps, TypographyVariants, VerticalSpacerSize };
