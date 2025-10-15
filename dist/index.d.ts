@@ -264,7 +264,7 @@ interface NavigationBarItemProps {
     /** Context menu handler */
     onContextMenu?: (e: React.MouseEvent<HTMLAnchorElement | HTMLLIElement>) => void;
 }
-declare const NavigationBarItem: React.ForwardRefExoticComponent<NavigationBarItemProps & React.RefAttributes<HTMLLIElement | HTMLAnchorElement>>;
+declare const NavigationBarItem: React.ForwardRefExoticComponent<NavigationBarItemProps & React.RefAttributes<HTMLAnchorElement | HTMLLIElement>>;
 
 interface NavigationBarItemWithDropDownProps extends NavigationBarItemProps {
     additionalOptions: OptionItem[][];

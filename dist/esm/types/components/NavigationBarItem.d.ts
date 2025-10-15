@@ -52,5 +52,5 @@ export interface NavigationBarItemProps {
     /** Context menu handler */
     onContextMenu?: (e: React.MouseEvent<HTMLAnchorElement | HTMLLIElement>) => void;
 }
-export declare const NavigationBarItem: React.ForwardRefExoticComponent<NavigationBarItemProps & React.RefAttributes<HTMLLIElement | HTMLAnchorElement>>;
+export declare const NavigationBarItem: React.ForwardRefExoticComponent<NavigationBarItemProps & React.RefAttributes<HTMLAnchorElement | HTMLLIElement>>;
 export default NavigationBarItem;
